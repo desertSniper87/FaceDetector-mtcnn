@@ -140,8 +140,13 @@ def generate_training_data_for_pnet(meta_data, output_folder, crop_size=12, suff
                                    np.ceil(1.25 * max(w, h)))
 
                 # delta here is the offset of box center
-                delta_x = npr.randint(-w * 0.2, w * 0.2)
-                delta_y = npr.randint(-h * 0.2, h * 0.2)
+
+                try:
+                    delta_x = npr.randint(-w * 0.2, w * 0.2)
+                    delta_y = npr.randint(-h * 0.2, h * 0.2)
+                except ValueError as v:
+                    print(v)
+                    continue
 
                 nx1 = int(max(x1 + w / 2 + delta_x - size / 2, 0))
                 ny1 = int(max(y1 + h / 2 + delta_y - size / 2, 0))

@@ -33,6 +33,9 @@ class WiderFace(object):
         current_dict = {}
 
         for line in f:
+            print('flag: ' + str(flag))
+            print(f'line: {line}')
+
             if flag == 0:
                 current_dict = {'file_name': os.path.join(
                     target_folder, line.strip())}
@@ -45,6 +48,11 @@ class WiderFace(object):
                 flag = 2
 
             elif flag == 2:
+
+                if num == 0:
+                    flag = 0
+                    continue
+
                 cur = [int(i) for i in line.strip().split(' ')]
 
                 # Append the boxes whoes attribute 'invalid' is 'True'.

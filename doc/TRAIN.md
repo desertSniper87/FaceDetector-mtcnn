@@ -34,27 +34,27 @@ ln -s /path/to/CelebA/* mtcnn/datasets/CelebA/
 ## Train
 First, we generate training data for pnet.
 ```bash
-python scripts/gen_pnet_train.py
+PYTHONPATH=$(pwd) python scripts/gen_pnet_train.py
 ```
 Train pnet with epoch 10, batchsize 256 and gpu:0.
 ```bash
-python scripts/train_pnet.py -e 10 -b 256 -o output/pnet.torchm -dv cuda:0 -r True
+PYTHONPATH=$(pwd) PYTORCH_ENABLE_MPS_FALLBACK=1 python scripts/train_pnet.py -e 10 -b 256 -o output/pnet.torchm -dv cuda:0 -r True
 ```
 Generate training data for rnet
 ```bash
-python scripts/gen_pnet_train.py -m output/pnet.torchm
+PYTHONPATH=$(pwd) python scripts/gen_rnet_train.py -m output/pnet.torchm
 ```
 Train rnet
 ```bash
-python scripts/train_rnet.py -e 10 -b 256 -o output/rnet.torchm -dv cuda:0
+PYTHONPATH=$(pwd) PYTORCH_ENABLE_MPS_FALLBACK=1 python scripts/train_rnet.py -e 10 -b 256 -o output/rnet.torchm -dv cuda:0
 ```
 Generate training data for onet
 ```bash
-python scripts/gen_onet_train.py -pm output/pnet.torchm -rm output/rnet.torchm
+PYTHONPATH=$(pwd) python scripts/gen_onet_train.py -pm output/pnet.torchm -rm output/rnet.torchm
 ```
 Train onet
 ```bash
-python scripts/train_onet.py -e 9 -b 256 -o output/onet.torchm -dv cuda:1 -r True
+PYTHONPATH=$(pwd) PYTORCH_ENABLE_MPS_FALLBACK=1 python scripts/train_onet.py -e 9 -b 256 -o output/onet.torchm -dv mps -r True
 ```
 
 

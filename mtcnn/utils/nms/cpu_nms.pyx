@@ -60,9 +60,13 @@ def cpu_nms(np.ndarray[np.float32_t, ndim=2] dets, np.ndarray[np.float32_t, ndim
             w = max(0.0, xx2 - xx1 + 1)
             h = max(0.0, yy2 - yy1 + 1)
             inter = w * h
-            ovr = inter / (iarea + areas[j] - inter)
-            if ovr >= thresh:
-                suppressed[j] = 1
+            try:
+                ovr = inter / (iarea + areas[j] - inter)
+                if ovr >= thresh:
+                    suppressed[j] = 1
+            except ZeroDivisionError as err:
+                print('inter, iarea, areas[j], inter')
+                print(inter, iarea, areas[j], inter)
 
     return keep
 

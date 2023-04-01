@@ -51,7 +51,7 @@ def nms(dets, scores, thresh, device="cpu"):
     if isinstance(device, str):
         device = torch.device(device)
 
-    if device.type == 'cpu':
+    if device.type == 'cpu' or device.type == 'mps':
         ret = cpu_nms(dets.astype(np.float32), scores.astype(np.float32),
                       thresh)
 
