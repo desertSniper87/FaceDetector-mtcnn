@@ -60,6 +60,7 @@ def nms(dets, scores, thresh, device="cpu"):
             dets.astype(np.float32),
             scores.astype(np.float32).reshape(-1, 1)
         ], 1)
+        print ("functional.py - l63", dets, thresh, device.index)
         ret = gpu_nms(dets, thresh, device_id=device.index)
 
     return ret

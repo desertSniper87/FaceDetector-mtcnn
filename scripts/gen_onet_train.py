@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('-pm', type=str, dest="pnet_model_file", help="Pre-trained pnet model file.")
 parser.add_argument('-rm', type=str, dest="rnet_model_file", help="Pre-trained rnet model file.")
 parser.add_argument('-o', dest="output_folder", default="output/data_train", type=str, help="Folder to save training data for onet.")
-parser.add_argument("-d", dest="detection_dataset",type=str, default="WiderFace",
+parser.add_argument("-d", dest="detection_dataset",type=str, default="iCartoonFace",
                     help="Face Detection dataset name.")
 parser.add_argument("-l", type=str, dest="landmarks_dataset", default="CelebA",
                     help="Landmark localization dataset name.")

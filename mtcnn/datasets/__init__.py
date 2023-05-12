@@ -1,5 +1,6 @@
 from .wider_face import WiderFace
 from .celeba import CelebA
+from .iCartoonFace import iCartoonFace
 
 import sys
 def get_by_name(name, *args, **kwargs):

@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(
     description='Generate training data for rnet.')
 parser.add_argument('-m', type=str, dest="model_file", help="Pre-trained model file.")
 parser.add_argument('-o', dest="output_folder", default="output/data_train", type=str, help="Folder to save training data for rnet.")
-parser.add_argument("-d", dest="detection_dataset",type=str, default="WiderFace",
+parser.add_argument("-d", dest="detection_dataset",type=str, default="iCartoonFace",
                     help="Face Detection dataset name.")
 parser.add_argument("-l", type=str, dest="landmarks_dataset", default="CelebA",
                     help="Landmark localization dataset name.")
@@ -22,10 +22,10 @@ landmarks_meta = landmarks_dataset.get_train_meta()
 landmarks_eval_meta = landmarks_dataset.get_val_meta()
 
 print("Start generate landmarks training data for rnet.")
-gl.gen_landmark_data(landmarks_meta, 24, args.output_folder, argument=False, suffix='rnet')
+# gl.gen_landmark_data(landmarks_meta, 24, args.output_folder, argument=False, suffix='rnet')
 print("Done")
 print("Start generate landmarks eval data for rnet.")
-gl.gen_landmark_data(landmarks_eval_meta, 24, args.output_folder, argument=False, suffix='rnet_eval')
+# gl.gen_landmark_data(landmarks_eval_meta, 24, args.output_folder, argument=False, suffix='rnet_eval')
 print("Done")
 
 # load pre-trained pnet
